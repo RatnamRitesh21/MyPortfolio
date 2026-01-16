@@ -1,0 +1,450 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Updated light mode colors to black and yellow combination */
+    --primary: 45 100% 51%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 43 74% 49%;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 45 100% 51%;
+
+    --radius: 0.5rem;
+
+    /* Updated gradient colors to yellow/gold tones */
+    --gradient-start: 45 100% 51%;
+    --gradient-middle: 43 74% 49%;
+    --gradient-end: 38 92% 50%;
+
+    --heading-color: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 45 20% 96%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 45 20% 96%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 45 20% 96%;
+
+    --primary: 45 100% 51%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 43 74% 49%;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 10% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 20% 96%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 45 100% 51%;
+
+    --radius: 0.5rem;
+
+    --gradient-start: 45 100% 51%;
+    --gradient-middle: 43 74% 49%;
+    --gradient-end: 38 92% 50%;
+
+    --heading-color: 45 100% 51%;
+
+    --neon-gold: 45 100% 51%;
+    --neon-amber: 43 74% 49%;
+    --neon-bronze: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl md:text-6xl mb-6;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl mb-4;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl mb-3;
+  }
+  h4 {
+    @apply text-xl md:text-2xl mb-2;
+  }
+  h5 {
+    @apply text-lg md:text-xl mb-2;
+  }
+  h6 {
+    @apply text-base md:text-lg mb-2;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, #ffd700, #fdb931, #c5a028);
+  }
+
+  /* Updated light mode gradient text to use yellow/gold colors */
+  :root .gradient-text {
+    background-image: linear-gradient(45deg, #ffd700, #fdb931, #c5a028);
+  }
+
+  .section-heading {
+    @apply text-3xl font-bold mb-8 text-[hsl(var(--heading-color))];
+  }
+
+  /* Added glow-text class for gradient text with glow effects */
+  .glow-text {
+    position: relative;
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.5));
+  }
+
+  .dark .glow-text {
+    filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.8)) drop-shadow(0 0 20px hsl(var(--primary) / 0.4));
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dark .gradient-text {
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Updated light mode gradient text glow to yellow */
+:root .gradient-text {
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Updated light mode section backgrounds to use yellow glow */
+.section-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.08), transparent 70%);
+  z-index: -1;
+}
+
+.dark .section-bg::before {
+  background: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.15), transparent 70%);
+}
+
+/* Updated light mode card hover effects to use yellow glow */
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.2), 0 10px 10px -5px rgba(255, 215, 0, 0.1), 0 0 15px
+    rgba(255, 215, 0, 0.15);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Updated light mode animated background to use yellow gradient */
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--secondary) / 0.05) 50%, transparent 100%);
+  z-index: -1;
+  transform: translateX(-100%);
+  animation: slide-in 1s forwards;
+}
+
+.dark .animated-bg::before {
+  background: linear-gradient(135deg, hsl(var(--neon-gold) / 0.1) 0%, transparent 100%);
+}
+
+/* Updated light mode glow effect to use yellow */
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
+}
+
+.dark .glow-on-hover:hover {
+  box-shadow: 0 0 15px hsl(var(--neon-gold)), 0 0 30px hsl(var(--neon-gold) / 0.5);
+}
+
+/* Glow effect */
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+/* Updated light mode grid and dots backgrounds to use yellow */
+:root .bg-grid {
+  background-image: linear-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+:root .bg-dots {
+  background-image: radial-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-grid {
+  background-image: linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-dots {
+  background-image: radial-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Updated light mode button glow effect to use yellow */
+:root .btn-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+:root .btn-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, rgba(255, 215, 0, 0.15), transparent 30%);
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+
+.dark .btn-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dark .btn-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, rgba(255, 215, 0, 0.15), transparent 30%);
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+
+/* Dark mode specific neon effects */
+.dark .neon-text {
+  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+.dark .neon-border {
+  box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
+.dark .neon-glow {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* Dark mode specific animations */
+.dark .animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: brightness(1.3) drop-shadow(0 0 15px currentColor);
+  }
+}
+
+/* Colorful timeline for dark mode */
+.dark .timeline-dot-primary {
+  background: linear-gradient(45deg, hsl(var(--neon-gold)), hsl(var(--neon-amber)));
+  box-shadow: 0 0 10px hsl(var(--neon-gold)), 0 0 20px hsl(var(--neon-gold) / 0.5);
+}
+
+.dark .timeline-dot-secondary {
+  background: linear-gradient(45deg, hsl(var(--neon-amber)), hsl(var(--neon-bronze)));
+  box-shadow: 0 0 10px hsl(var(--neon-amber)), 0 0 20px hsl(var(--neon-amber) / 0.5);
+}
+
+.dark .timeline-dot-accent {
+  background: linear-gradient(45deg, hsl(var(--neon-bronze)), hsl(var(--neon-gold)));
+  box-shadow: 0 0 10px hsl(var(--neon-bronze)), 0 0 20px hsl(var(--neon-bronze) / 0.5);
+}
+
+.dark .timeline-dot-green {
+  background: linear-gradient(45deg, #c5a028, #d4af37);
+  box-shadow: 0 0 10px #d4af37, 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Colorful cards for dark mode */
+.dark .card-glow-primary {
+  box-shadow: 0 0 15px hsl(var(--neon-gold) / 0.3);
+}
+
+.dark .card-glow-secondary {
+  box-shadow: 0 0 15px hsl(var(--neon-amber) / 0.3);
+}
+
+.dark .card-glow-accent {
+  box-shadow: 0 0 15px hsl(var(--neon-bronze) / 0.3);
+}
+
+/* Colorful background effects for dark mode */
+.dark .bg-grid {
+  background-image: linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-dots {
+  background-image: radial-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Colorful button effects for dark mode */
+.dark .btn-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dark .btn-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, rgba(255, 215, 0, 0.15), transparent 30%);
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* Add this new style for gradient headings */
+.gradient-heading {
+  @apply section-heading relative;
+}
+
+.gradient-heading::after {
+  content: attr(data-content);
+  @apply absolute inset-0 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  z-index: 1;
+}
+
+/* Updated light mode navbar gradient to use yellow tones */
+:root .navbar-gradient {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.08), rgba(253, 185, 49, 0.08), rgba(197, 160, 40, 0.08));
+  backdrop-filter: blur(10px);
+}
+
+/* Navbar styles for dark mode */
+.dark .navbar-gradient {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(253, 185, 49, 0.1), rgba(197, 160, 40, 0.1));
+}
+
+.dark .navbar-text {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.dark .navbar-text:hover {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.dark .navbar-active {
+  color: #ffd700;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+}
+
+/* Slow spin animation for skill card glow effect */
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Light mode navbar text styles */
+:root .navbar-text {
+  color: hsl(var(--foreground));
+  transition: all 0.3s ease;
+}
+
+:root .navbar-text:hover {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 10px hsl(var(--primary) / 0.3);
+}
+
+:root .navbar-active {
+  color: hsl(var(--primary));
+  font-weight: 600;
+  text-shadow: 0 0 15px hsl(var(--primary) / 0.4);
+}
